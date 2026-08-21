@@ -1,4 +1,3 @@
-```java
 package com.shafting.client;
 
 import java.util.Optional;
@@ -536,4 +535,3 @@ public final class WorldEspRenderer {
         return ((argb >>> 8) & 255) / 255.0f;
     }
 }
-```
