@@ -2,35 +2,31 @@ name: Build Shafting
 
 on:
   push:
+  pull_request:
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Set up Java 25
-        uses: actions/setup-java@v4
+      - name: Setup Java 25
+        uses: actions/setup-java@v5
         with:
-          distribution: temurin
+          distribution: microsoft
           java-version: '25'
 
-      - name: Set up Gradle 9.5
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '9.5.1'
-
-      - name: Show Gradle version
-        run: gradle --version
+      - name: Make Gradle executable
+        run: chmod +x ./gradlew
 
       - name: Build
-        run: gradle build --no-daemon
+        run: ./gradlew build --no-daemon
 
       - name: Upload JAR
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: shafting-jar
-          path: build/libs/*.jar
+          path: build/libs/
