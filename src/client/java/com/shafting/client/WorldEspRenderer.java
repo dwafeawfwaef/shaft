@@ -248,4 +248,3 @@ public final class WorldEspRenderer {
         return ((argb >>> 8) & 255) / 255.0f;
     }
 }
-```
