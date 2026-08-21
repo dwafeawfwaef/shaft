@@ -1,6 +1,3 @@
-# WorldEspRenderer.java
-
-```java
 package com.shafting.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
